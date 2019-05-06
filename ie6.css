@@ -1,0 +1,11 @@
+将元素固定在页面可以用position:fixed
+而ie6不支持
+所以需要特殊定义css
+#d {
+    position:fixed;
+    _position:absolute;
+    bottom:0;
+    right:20px;
+    _bottom:auto;
+    _top:expression( eval( document.documentElement.scrollTop+200 ));
+}

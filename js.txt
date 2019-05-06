@@ -1,0 +1,63 @@
+1. window.name = {};
+就可以直接name调用这个资源了
+2. 判断ie6
+isIE6 = !! (("ActiveXObject" in window) && !("XMLHttpRequest" in window))
+
+!!双感叹号用来判断值是否有效，（null,undefined,0''）返回fasle,其他返回true
+3. 定义一个对象，{a:'1',b:'2',fun:function(params){}}
+4. location.host获取域名
+5. str.split('.')返回以.分割字符串的数组结果
+6. arr.pop()返回数组最后一个元素
+7. str.toLowerCase()转换小写，str.toUpperCase()转换大写
+8. js中in关键字的用法：
+    在for循环中k in arr是将素组键/对象键赋值给k
+    在if判断语句中k in arr是判断的k是否在数组键/对象键中存在
+    都是对键的操作和判断
+9. js正则:
+    str.match(new RegExp('^\\d'))返回匹配到的内容(转译符号用两个)
+10. for(k in opts) {
+    if(!opts.hasOwnProperty(k)){
+        continue
+    }
+}
+    初看这个方法感觉是没用的，实际上也试过，opts={'a':1,'b':function(){console.log(2)}}
+    返回的都是true
+    最后问的彪哥，原来是在找k是opts这个对象自身的属性，而不是继承方式获取的
+    合着js也有继承！
+    js中声明一个对象也是用function：
+    function a(params){
+        this.name=params;
+        this.value='value';
+        this.sayHello = function(){
+            console.log('hello');
+        }
+    }
+    var v=new a('h');
+    继承：
+    function child(p){
+        this.parent=a;
+        this.parent(p);
+        delete this.parent;
+        this.b=function(){
+            console.log('b');
+        }
+    }
+    继承方法2:
+    call
+    继承方法3:
+    apply
+    继承方法4:
+    原型链方式;
+    Child.prototype=new a();
+    var child=new child('张');
+    继承方法5:
+    ..
+11. var div=document.createElement('div');
+    div.id='div'
+    document.body.appendChild(div);
+    var odiv=getElementById("div");
+    var iframe=document.createElement("iframe");
+    iframe.url='http://baidu.com';
+    odiv.appendChild(iframe);
+12. substing(url.indexOf("?")+1,(url.indexOf("#") == -1? url.length:url.indexOf("#"))).split("&");
+

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example HTML Page</title>
+        <script type="text/javascript" src="./example.js"></script>   
+        <meta http-equiv='set-cookie' content='user1=zhangsan'>
+        <meta http-equiv='set-cookie' content='user22=lisi'>
+    </head>
+    <body>
+    <script type="text/javascript">
+        console.log(document.cookie);
+        document.cookie='user3=wangwu';
+        document.cookie='user3=zhaoliu';
+        console.log(document.cookie);
+        function sayHi(){
+            alert("Hi!");
+        }
+        
+        function test(){
+            message='hi';
+        }
+        test();
+        //alert(message);
+        //1 undefined
+        var message='hi',found=false,age=29;
+        var un; //等价于un=undefined
+        console.log(un==undefined); // true
+        //  下面变量没有声明
+        // var m
+        typeof m;   //  对于未初始化的变量m只能用typeof函数不报错，其他函数都会报错.返回undefined
+
+        //2 null
+        var car=null;
+        //alert(typeof car);//'object'
+        if (car != null){
+            // 对 car对象执行某些操作
+        }
+        console.log(null==undefined);         //true
+
+        //3 boolean
+        var found=true;
+        var lost = false;
+
+        //4 number
+        //浮点
+        var floatNum1 = 1.1;
+        var floatNum2 = .1;//有效，不推荐
+
+        var floatNum1 = 1.; //小数点后没有数字——解析为1
+        var floatNum2 = 10.0;//整数——解析为10
+    
+        var floatNum = 3.124e7; //等于。31240000
+        //浮点计算存在精度问题 0.1+0.2=0.30000000000000004
+        
+        //数值范围
+        console.log(Number.MAX_VALUE);  //1.7976931348623157e+308
+        console.log(Number.MIN_VALUE);  //5e-324
+        var result=Number.MAX_VALUE+Number.MAX_VALUE;
+        console.log(isFinite(result));  //false
+
+        //5 NaN数值型
+        //isNaN()   判断是否'不是数值'。函数接收一个参数，尝试数值转换为数值。
+        console.log(isNaN(NaN));    //  true
+        console.log(isNaN(10)); //false
+        console.log(isNaN("10"));   //false
+        console.log(isNaN("blue")); //true  字母字符串不能强制转化成数值型
+        console.log(isNaN(true));   //false 转换成1
+        
+        //6 数值转换 Number(),parseInt(),parseFloat()
+        //Number()函数的转换规则
+        // +---------------+-------------------------------+
+        //  输入参数       |转换结果
+        // +---------------+-------------------------------+
+        //  boolean        |true 1 false 0
+        // +---------------+-------------------------------+
+        //  数字           |不变
+        // +---------------+-------------------------------+
+        //  null           |0
+        // +---------------+-------------------------------+
+        //  undefined      |NaN
+        // +---------------+-------------------------------+
+        //  字符串数字     |转换成10进制数字
+        // +---------------+-------------------------------+
+        //  字符串16进制   |转换成10进制数字等值
+        // +---------------+-------------------------------+
+        //  字符串16进制   |转换成10进制数字等值
+        // +---------------+-------------------------------+
+        //  字符串中不只数字|NaN
+        // +---------------+-------------------------------+
+        //  对象            |调用valueOf()方法，然后依照前面规则转换返回值。如果转换结果为NaN，则调用toString()方法，让后再依照前面规则转换
+        // +---------------+-------------------------------+
+        var num1=Number("Hello world!");    //NaN
+        var num2=Number("");                //0
+        var num3=Number("000011");          //11
+        var num4=Number(true);              //1
+        
+        //parseInt( 数, 进制)函数
+        var num1=parseInt("1234blue");  //1234
+        var num2=parseInt("");  //NaN
+        var num3=parseInt("0xA");  //10 (10进制数)
+        var num4=parseInt("22.5");  //22
+        var num5=parseInt("070");  // ECMAScript3认为56(8进制) ECMAScript5认为70(10进制)
+
+        var num=parseInt("0xAF", 16);//175
+        var num1=parseInt("AF", 16); //175
+        var num2=parseInt("AF", 10); //NaN
+        
+        //parseFloat
+        var num1=parseFloat("1234blue");//1234
+        var num2=parseFloat("0xA");//0
+        var num3=parseFloat("22.5");//22.5
+        var num4=parseFloat("22.34.5");//22.34
+        var num5=parseFloat("0908.t");//908.5
+        var num6=parseFloat("3.124e7");//31240000
+
+        //string
+        //toString转换为字符串
+        var age=11;
+        var ageAsString=age.toString();//"11"
+        var found=true;
+        var foundAsString=found.toString();//"true"
+
+        var num=10;
+        console.log(num.toString());//"10"
+        console.log(num.toString(2));//"1010"
+        console.log(num.toString(8));//"12"
+        console.log(num.toString(10));//"10"
+        console.log(num.toString(16));//"a"
+
+        //object类型
+        var o = new Object();
+        // constructor:保存着用于创建当前对象的函数。对于前面的例子，构造函数constructor就是Object()。
+        // hasOwnProperty(propertyName):用于检查给定的属性在当前对象实例中（而不是在实例的原型中）是否存在。其中，作为参数的属性名（propertyName）必须以字符串形式指定
+        // isPrototypeOf(object):用于检查传入的对象是否是另一个对象的原型。
+        // propertyIsEnumerable(propertyName):用于检查给定的属性是否能够使用for-in语句来枚举。与hasOwnProperty()方法一样，作为参数的属性名必须以字符串形式指定。
+        // toLocaleString():返回对象的字符串表示，该字符串与执行环境的地区对应
+        // toString():返回对象的字符串表示
+        // valueOf():返回对象的字符串、数值或布尔值表示。通常与toString()方法的返回值相同。
+
+        //  start 操作符
+        //按位非(not)~
+        var num1=25;    //  
+        var num2=~num1; //      操作数的复数-1
+        console.log(num2);
+
+        //按位与&
+        console.log(25&3);  //  1
+        //按位或|
+        console.log(25|3);  //  27
+        
+        //按位异或xor ^
+        console.log(25^3);  //  26
+        //左移<<
+        var oldValue=2;
+        var newValue=oldValue<<5;//64 
+        //有符号右移    >>
+        var oldValue=64;            //1000000
+        var newValun=oldValue>>5;   //
+        Number(64).toString(2);     // "1000000"
+
+        //无符号右移    >>>
+        var oldValue=64;
+        var newValue=oldValue >>> 5;    //二进制10 即十进制2
+        var oldValue=-64;
+        var newValue=oldValue >>> 5;    //等于十进制134217726
+        
+        //布尔操作符
+        
+        //加性操作符
+        var result1=5+5;
+        console.log(result1);//10
+        var result2=5+"5";
+        console.log(result2);//"55"
+        var n1=5;
+        var n2=10;
+        var msg="the sum of 5 and 10 is "+n1+n2;    //  the sum of 5 and 10 is 510
+        var msg="the sum of 5 and 10 is "+(n1+n2);  //  the sum of 5 and 10 is 15
+        //减法
+
+        //比较
+        var result='23'<'3';    //true  2字符编码50，3字符编码51
+        var result='23'<3;  //false "23"转换成数值23，然后在比较       
+        var result="a"<3;   //false "a"转换成数值NaN
+        var result=NaN<3;   //false NaN跟数字比较都是false
+
+        //逗号操作符    声明多个变量，还可以用于赋值。
+        var num=(5,1,4,8,0);    //  num的值为0
+        //  end 操作符
+
+        //语句
+        //if语句
+        //  if(condition) statement1 else statement2
+        //do-while语句
+        // do {
+        //     statement
+        // }while (expression)
+        var i=0;
+        do {
+            i+=2;
+        } while (i<10);
+        console.log(i);
+        //while语句
+        // while(expression) statement
+        //for语句
+        // for(initialization; expression; post-loop-expression) statement
+        // for(;;){    //无限循环
+        //     doSomething();
+        // }
+        //for-in语句
+        // for (property in expression) statement
+        //label语句
+        // label: statement
+        // start: for(var i=0;i<1000;i++){
+        //     console.log(i);
+        // }
+        //break和continue语句
+        var num=0;
+        outermost:
+        for (var i=0;i<10;i++){
+            for (var j=0;j<10;j++){
+                if(i==5&&j==5){
+                    continue outermost;
+                }
+            }
+        }
+        console.log(num);//95
+        
+        // with语句
+        // with (expression) statement;
+        var qs = location.search.substring(1);
+        var hostName=location.hostname;
+        var url=location.href;
+        //等同于
+        // with(location){
+        //     var qs=search.substring(1);
+        //     var hostname=hostname;
+        //     var url=href;
+        // }
+        //由于大量使用with语句会导致性能下降，同时也会给调试代码造成困难，因此开发大型应用程序是，不建议使用with语句
+        //switch语句
+        // switch(expression){
+        //     case value: statement
+        //         break;
+        //     case value: statement
+        //         break;
+        //     default: statement
+        // }
+        i=25; 
+        switch(i){  //  可以合并两种情况
+            case 25:
+            case 35:
+                console.log("25 or 35");
+                break;
+            case 45:
+                break;
+            default:
+                console.log('other');
+        }
+        //函数
+        // function funname(arg0,arg1,..argN){
+        //     statements
+        // }
+        
+        //函数参数
+        function sayHi(){
+            alert("Hello "+arguments[0]+","+arguments[1]);
+        }
+        
+        function howManyArgs(){
+            console.log(arguments.length);
+        }
+        howManyArgs("string",45);   //2
+        howManyArgs();  //0
+        howManyArgs(12);    //1
+
+        function doAdd(){
+            if(arguments.length==1){
+                console.log(arguments[0]+10);
+            } else if(arguments.length==2) {
+                console.log(arguments[0]+arguments[1]);
+            }
+        }
+        doAdd(10);
+        doAdd(20,30);
+
+        function doAdd(num1,num2){
+            arguments[1]=10;
+            console.log(arguments[0]+num2);
+        }
+        //修改arguments中的值，命名参数值跟着变，而修改命名参数值arguments中的值不变。
+        //关于参数寒窑记住一点：没有传递值的命名参数将自动被赋值undefined值。这就跟定义了变量单有没有初始化一样。
+        //没有重载
+// ECMAScript函数没有签名，因为其参数是有包含0或多个值的数组来表示的。而没有函数签名，真正的重载时不可能做到的。所以函数只能被覆盖
+        
+
+        function createPerson(name){
+            var localPerson=new Object();
+            localPerson.name=name;
+            return localPerson;
+        }
+        var globalPerson = createPerson("ni");
+        //手工接触globalPerson的引用
+        globalPerson=null;
+
+        
+    </script>
+    </body>
+</html>

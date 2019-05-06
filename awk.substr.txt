@@ -1,0 +1,3 @@
+cat /tmp/history.log | awk '{print substr($0,8)}'
+相同的问题可以:
+cat /tmp/history.log | awk -F '^ [0-9 ]*' '{print $2}'

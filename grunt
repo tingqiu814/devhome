@@ -1,0 +1,30 @@
+grunt 前段自动化工具
+先安装nodejs，确认npm可以使用
+mkdir learn-grunt && cd learn-grunt
+npm install -g grunt-cli
+npm init    //一路回车
+生成了package.json文件
+npm install grunt --save-dev //将grunt加入package.json文件中的devDependencies
+uglify工具生成js压缩文件工具(官方工具列表https://github.com/gruntjs)
+npm install grunt-contrib-uglify
+现在配置Gruntfile文件（Gruntfile.js或Gruntfile.coffee）
+module.exports = function(grunt){
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n' 
+            },
+            build: {
+                src: 'src/<%= pkg.name %>.js',
+                dest: 'build/<%= pkg.name %>.mini.js'
+            },
+        },
+    });
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.registerTask('default',['uglify']);
+}
+
+配置完成，mini文件会生成在build文件夹下。源文件放在src文件夹下
+命令行执行：
+grunt uglify:build 命令（uglify:build是具体task 可省略,因下面设置了默认task）

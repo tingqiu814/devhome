@@ -1,0 +1,9 @@
+tr(translate)
+tr [ - c/d/s/t ] [set1] [set2]
+echo 1122334|tr -c 1 5  //  1155555
+-c: complement 用set2 替换非set1部分
+-d：delete  删除
+echo 1122334| tr -d 1   //  22334
+-s：squeeze-repeats 压缩重复字符
+echo 1122334 | tr -s [0-9]  //  1234
+-t：translate-set1  用set2换掉set1，缺省

@@ -1,0 +1,40 @@
+vim目录的时候一些快捷键总结
+移动上k下j左h右l
+o    Enter the file/directory under the cursor in a oew browser window.  A horizontal split is used.
+    在新窗口打开文件/目录 焦点移动到新窗口 水平分割当前窗口
+O    Obtain a file specified by cursor 
+    获取光标指定文件
+-   去上一级目录
+p   预览文件，焦点不变
+d   Make a directory
+    mkdir 在当前文件夹下创建目录
+D   Attempt to remove the file(s)/directory(ies)
+    删除文件
+<c-h>   Edit file hiding list
+    设置当前文件夹下隐藏列表
+i   Cycle between thin, long, wide, and tree listings
+    切换显示模式
+R   重命名
+r   反向排序
+s   切换排序（name,time,size）
+u   返回之前目录
+U   前进目录
+v   垂直分割窗口编辑选中文件，焦点移动到新窗口
+%   在当前目录新建文件，并在当前窗口编辑
+
+NERDTree
+o   打开目录/指定窗口打开文件,焦点到新新窗口
+C   进入目录
+go  新窗口打开文件/目录，焦点不变
+p   到上一级目录
+u   进入上一级目录
+x   关闭目录
+i   新窗口打开
+t   新标签页打开
+T   新表签沉默打开
+I   显示/关闭隐藏文件
+F   显示/关闭文件
+cd  跳转到指定目录
+s   vsplit  垂直分割新建窗口
+gs  焦点不变
+

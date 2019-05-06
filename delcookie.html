@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delcookies</title>
+</head>
+<body>
+<script type="application/javascript">
+    setCookie= function(name, value, expire, domain, path, secure) {
+            var cookie, expire = expire ? new Date(new Date().getTime() + expire).toGMTString() : false;
+            cookie = name + "=" + escape(value);
+            cookie += "; path=" + (path ? path : "/");
+            if (domain) {
+                cookie += "; domain=" + domain;
+            }
+            if (secure) {
+                cookie += "; secure";
+            }
+            if (expire) {
+                cookie += "; expires=" + expire;
+            }
+            document.cookie = cookie;
+        }
+
+    getCookie = function(param, decode) {
+        var c, cookie = document.cookie,
+            t, i, l;
+        decode = decode === undef ? true : decode;
+        if (param) {
+            c = cookie.match(new RegExp("(^| )" + param + "=([^;]*)")) == null ? undef : (RegExp.$2);
+            if (decode && c !== undef) {
+                try {
+                    c = decodeURIComponent(c)
+                } catch (e) {
+                    c = unescape(c)
+                }
+            }
+            return c
+        } else {
+            var obj = {};
+            cookie = cookie.split("; ");
+            for (i = 0, l = cookie.length; i < l; ++i) {
+                t = cookie[i].split("=");
+                c = t.pop();
+                if (decode && c !== undef) {
+                    try {
+                        c = decodeURIComponent(c)
+                    } catch (e) {
+                        c = unescape(c)
+                    }
+                }
+                obj[t.shift()] = c
+            }
+            return obj
+        }
+    }
+
+        function delCookie(name,domain)//删除cookie
+        {
+            setCookie(name, "", -60000, domain);
+        }
+
+        var xlCookies = "VERIFY_KEY,blogresult,active,isspwd,score,downbyte,isvip,jumpkey,logintype,nickname,onlinetime,order,safe,downfile,sessionid,sex,upgrade,userid,usernewno,usernick,usertype,usrname,loginkey,xl_autologin",
+            i, cookies = xlCookies.split(",");
+        for (i = cookies.length; i > 0; --i) {
+            delCookie(cookies[i - 1], ".xunlei.com");
+        }
+
+</script>
+
+</body>
+</html>

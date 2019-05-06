@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<iframe src="http://dev.xunlei.com/xl/demo.html"></iframe>
+<script>
+    window.onload=function(){
+
+    localStorage.setItem("local_key",'local_key')
+    localStorage.setItem("common",'common')
+
+    var m=localStorage.getItem("devxl_key");
+    console.log("devxl_key"+m);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example HTML Page</title>
+        <script type="text/javascript" src="./example.js"></script>   
+        <meta http-equiv='set-cookie' content='user1=zhangsan'>
+        <meta http-equiv='set-cookie' content='user22=lisi'>
+    </head>
+    <body>
+        <input id='currentInput' type='text' />
+<script type="text/javascript">
+    function displayInfo(args){
+        var output = '';
+        if(typeof args.name=='string'){
+            output+='name:'+args.name+"\n";
+        }
+        if(typeof args.age=='number'){
+            output+='age:'+args.age+"\n";
+        }
+        console.log(output);
+    }
+displayInfo({
+name:"nicholas",
+age:29
+});
+displayInfo({
+name:"gre"
+});
+person={'name':'name',age:'age'}
+var propertyName='name';
+console.log(person[propertyName]);  //'name'
+//  等价于person.name
+//array
+var colors = new Array();
+var colors=new Array(20);
+var colors=new Array('red','blue','green');
+
+var colors=['red','blue','green'];
+var name=[];
+console.log(colors.length); //  3
+console.log(name.length);   //  0   
+
+//length属性不是只读，因此可以设置，从数组末尾移除或添加项
+colors.length=2;
+console.log(colors[2]); //  undefined
+//在数组尾添加
+colors[colors.length]='new';
+
+if(colors instanceof Array){
+
+}
+if(Array.isArray(colors)){
+
+}
+//转换方法
+var colors=['red','blue','green'];
+console.log(colors.toString()); //"red,blue,green"
+console.log(colors.valueOf());  //["red", "blue", "green"]
+console.log(colors);    //["red", "blue", "green"] 
+
+var person1={
+toLocaleString:function(){
+                   return 'nikolas';
+               },
+toString:function(){
+             return 'nn';
+         }
+};
+var person2={
+toLocaleString:function(){
+                   return 'grig';
+               },
+toString:function(){
+             return 'gri';
+         }
+};
+var people=[person1,person2];
+console.log(people);
+console.log(people.toString());
+console.log(people.toLocaleString());
+
+console.log(colors.join(','));   //red,green,blue
+console.log(colors.join("||")); //red||green||blue
+//栈方法
+var colors=new Array();
+var count=colors.push('red','green');
+console.log(count); //2
+count = colors.push('black');
+console.log(count); //3
+var item=colors.pop();
+console.log(item);  //black
+console.log(colors.length); //2
+
+//队列方法
+var colors=new Array();
+var count = colors.push('red','green');
+console.log(count); //2
+
+count=colors.push('black');
+console.log(count); //3
+
+var item =colors.shift();
+console.log(item);    //red
+console.log(colors.length); //2
+
+//unshift方法，从数组前添加任意项，并返回新数组长度。配合pop()方法可以从相反的方向来模拟队列
+
+//重排序方法
+var values=[1,2,3,4,5];
+values.reverse();
+console.log(values);
+
+var v=[1,5,10,15];
+//sort默认会按照字符串排序，如果是两位数只按十位排。所以需要加参数。值接收函数为参数
+function compare(v1,v2){
+    return v1>v2?1:(v1==v2)?0:-1;
+}
+console.log(v.sort(compare));
+
+var colors = ['red','green','blue'];
+var colors2 = colors.concat('yellow',['black','brown']);
+
+console.log(colors);
+console.log(colors2);
+
+//arr.slice(v1[,v2])返回arr[v1]到arr[v2]/最后
+var colors = ['red','green','blue','yellow','purple'];
+var colors2 = colors.slice(1);
+var colors3 = colors.slice(1,4);
+console.log(colors2);
+console.log(colors3);
+
+//splice()  向数组的中部插入项，可以删除任意数量的项，只需指定2个参数：要删除的第一项的位置和要删除的项数
+//  插入： 需要3个参数：起始位置、0（要删除的项数）和要插入的项。如果要插入多个项，可以传入第四、第五项
+//  替换： 可以向指定位置插入任意数量的项，3个参数，起始位置、要删除的项和要插入的任意数量的项。插入的项书不必与删除的项数相等。
+var colors = ['red','green','blue'];
+var removed = colors.splice(0,1);   //删除第一项
+console.log(colors);
+console.log(removed);
+
+removed = colors.splice(1,0,'yellow','orange');
+console.log(colors);
+console.log(removed);
+
+removed = colors.splice(1,1,'red','purple');
+console.log(colors);
+console.log(removed);
+
+// indexOf(search[,start=0])    从start开始第一次出现位置
+//lastIndexOf(search[,end]) end位置之前最后一次出现位置
+var numbers=[1,2,3,4,5,4,3,2,1];
+console.log(numbers.indexOf(4));    //3
+console.log(numbers.lastIndexOf(4));    //5
+console.log(numbers.indexOf(4,4));    //3
+console.log(numbers.lastIndexOf(4,4));    //5
+
+var person = {name:"Nicholas"};
+var people = [{name:"nicholas"}];   
+
+var morePeople = [person];
+console.log(people.indexOf(person));    //-1
+console.log(morePeople.indexOf(person));    //0
+
+//5个迭代方法 都不会修改数组中的包含的值
+//  every() ：对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true
+//  filter() ：对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组。
+//  forEach() ：对数组中的每一项运行给定函数。这个方法没有返回值
+//  map() ：对数组中的每一项运行给定函数，返回每次函数调用的结果组成数组
+//  some() ：对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true。
+
+var numbers=[1,2,3,4,5,4,3,2,1];
+var everyResult = numbers.every(function(item,index,array){
+        return (item > 2);
+        })
+console.log(everyResult);   //false
+var someResult = numbers.some(function(item,index,array){
+        return (item > 2);
+        })
+console.log(someResult);    //true
+var filterResult = numbers.filter(function(item,index,array){
+        return (item > 2);
+        })
+console.log(filterResult);  //[3,4,5,4,3]
+var mapResult = numbers.map(function(item,index,array){
+        return item*2;
+        })
+console.log(mapResult); //[2,4,6,8,10,8,6,4,2]
+numbers.forEach(function(item,index,array){
+        // 执行默写操作
+        })
+//缩小方法  reduce()    reduceRight()
+//  reduce()和reduceRight()  接收两个参数在每一项上调用的函数和作为缩小基础的初始值
+//  reduce(function(prev,cur,index,array){});
+var values=[1,2,3,4,5];
+var sum = values.reduce(function(prev,cur,index,array){
+        return prev+cur;
+        });
+console.log(sum);   //15
+//第一次执行prev是1，cur是2。第二次，prev是3（1+2的结果），cur是3（数组第三项）。
+//reduceRight()作用类似，只不过方向相反而已。
+
+//data类型
+var now=new Date();
+var someDate = new Date(Date.parse("May 25,2004"));
+//如果传入Date.parse()方法的字符串不能表示日期，则返回NaN
+var someDate = new Date("May 25,2004");
+
+// Date.now()  ie9+、firefox 3+、Safari 3+、Opera 10.5和Chrome支持
+// 不支持的中用+Date.now()方法也可以达到同样目的
+
+//日期格式化方法
+//toDateString()
+//toTimeString()
+//toLocaleDateString()
+//toLocaleTimeString()
+//toUTCString()
+
+// RegExp类型
+// perl的语法
+// expression = /parttern/flags;
+var pattern1 = /[bc]at/i;
+//等价
+var pattern2 = new RegExp("[bc]at","i");
+//RegExp实例属性
+//global:是否设置了g标志
+// ignoreCase:
+// lastIndex:表示开始搜索下一个匹配项的字符位置，从0算起
+// multiline:是否设置m
+// source:正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回。Vkkkkk
+
+var text = 'mom and dad and baby';
+var pattern = /mom( and dad( and baby)?)?/gi
+
+var matches=pattern.exec(text);
+console.log(matches.index); //0
+console.log(matches.input); //'mom and dad and baby'
+console.log(matches[0]);    //
+console.log(matches[1]);    //
+console.log(matches[2]);    //
+
+//Function 类型
+function ssum(n1,n2){
+    return n1+n2;
+}
+console.log(ssum(10,10));    //20
+var anotherSum=ssum;
+console.log(anotherSum(10,10)); //20
+ssum=null;
+console.log(anotherSum(10,10)); //20
+
+//var sum=15;function sum(n1){return n1};console.log(sum);  //会打印15  这种定义函数方法不会做赋值操作
+var sum=1;
+function sum(){}
+console.log(sum);    //    这个时候会打印1   因为函数声明在解析的时候被提前解析了。所以会被覆盖 
+sum = function(){};  //    这种方式赋值。
+//没有重载
+function addSomeNumber(n){
+    return n+100;
+}
+function addSomeNumber(n){
+    return n+200;
+}
+var result = addSomeNumber(100);    //300
+// 函数声明和函数表达式
+//function fname(){}  是函数声明
+//var fname = function(){};   是函数表达式    
+//在解析的时候会先把函数声明提前，而表达式不会提前。
+console.log(fun);
+function fun(){}
+//这种不会报错
+
+console.log(fun);
+fun=function(){};
+//这种会报错
+
+function factiorial(num){
+    if(num <= 1){//=>只为消除格式高亮
+        return 1;
+    }else{
+        return num*factorial(num-1);
+    }
+}
+//定义一个阶乘一定用到递归，递归中用到了函数的方法名，跟方法名紧密耦合。消除这种耦合可以将方法名换成arguments.callee
+function a(num){
+    console.log(arguments);
+}
+a('hello');
+
+window.color='red';
+var o={color:'blue'};
+function sayColor(){
+    console.log(this.color);
+}
+
+sayColor(); //red
+o.sayColor = sayColor;
+o.sayColor();       //blue;
+
+function outer(){
+    inner();
+}
+function inner(){
+//    alert(inner.caller);
+    console.log(arguments.callee.caller);
+}
+outer();
+
+//函数的属性和方法
+//函数的length属性代表需要接收的参数个数
+//prototype
+function func(arg1,arg2,arg3=null){
+    console.log(func.length);//2    必须传的参数个数
+}
+func();
+
+//函数自带的apply()方法
+sum = function (num1, num2){
+    return num1+num2;
+}
+function callSum1(num1, num2){
+    return sum.apply(this, arguments);//传入arguments对象
+}
+function callSum2(num1, num2){
+    return sum.apply(this, [num1, num2]);   //传入数组
+}
+//call方法与apply方法作用相同,不同在接收参数方式
+function callSum(num1, num2){
+    return sum.call(this,num1,num2);
+}
+console.log(callSum(10,20)); //30
+
+window.color='red';
+var o={color:'blue'};
+
+sayColor();//red
+sayColor.call(this);//red
+sayColor.call(window);//red
+sayColor.call(o);//blue 改变执行环境 起到扩充作用域的效果
+
+var num=10;
+console.log(num.toString());//10
+console.log(num.toString(2));//1010
+console.log(num.toString(8));//12
+console.log(num.toString(16));//a
+
+console.log(sum);
+
+let current = document.getElementById('currentInput');
+//第一种，直接用focus()方法，有时候会不起作用
+current.focus();
+//第二章，延迟执行focus方法，一直都能获取成功
+setTimeout(function () {
+//            current.focus();
+            },50);
+var stringValue = 'Hello world';
+console.log(stringValue.slice(2));      //llo world
+console.log(stringValue.substring(2));  //llo world
+console.log(stringValue.substr(2));     //llo world
+console.log(stringValue.slice(2,7));    //llo w
+console.log(stringValue.substring(2,7));//llo w
+console.log(stringValue.substr(2,7));   //llo wor
+//slice substring substr 区别在于substr第二个参数代表长度
+</script>
+    </body>
+</html>

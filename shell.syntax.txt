@@ -1,0 +1,58 @@
+SHELL脚本基本语法
+#!/bin/bash
+1 以#!开头 后面接可执行命令
+2 从键盘读取变量
+read var1 var2
+参数名不带$ 引用的时候加
+3 注释#开头
+4 系统变量：
+    $0  这个程序的名字
+    $n  这个程序的第n个参数值，n=1...9
+　　$*  这个程序的所有参数
+　　$#  这个程序的参数个数
+　　$$  这个程序的PID
+　　$!  执行上一个背景指令的PID
+    $?  上一个指令的返回值
+5 expr v1 operator v2   (严格按照格式来，每个参数前后都一个空格,乘法要加转译符\)
+    $((v1 operator v2))
+    expr 将v1，v2转换成整型进行operator(+-*/%)运算
+6 test 逻辑运算 用[  ]括起来就是test运算
+    -eq 相等
+    -ne 不相等
+    -gt 大于
+    -ge 大于等于
+    -lt <
+    -le <=
+7 if分支
+    if [ var = val ]
+    then
+    command
+    else
+    if [ var = val ]
+    then 
+    command 
+    else
+    command
+    fi
+    elif 
+8 case分支
+    case value in
+    pat1)
+    command;;
+    pat2)
+    command;;
+    pat)
+    command;
+    esac
+9 for循环
+    for var(不带$) in arg1 arg2 ... argn
+    do
+    command
+    ....
+    command
+    done
+10 while
+    while ...;
+    do
+    command
+    done

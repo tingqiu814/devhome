@@ -1,0 +1,11 @@
+<iframe id="ifr" src="http://b.xunlei.com/bindex.html"></iframe>
+<script type="text/javascript">
+    window.onload = function() {
+        var ifr = document.getElementById('ifr');
+        var targetOrigin = 'http://b.xunlei.com';  // 若写成'http://b.com/c/proxy.html'效果一样
+                                            // 若写成'http://c.com'就不会执行postMessage了
+        ifr.contentWindow.postMessage('I was there!', targetOrigin);
+    };
+    document.domain='xunlei.com';
+    localStorage.setItem('a','a');
+</script>

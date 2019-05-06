@@ -1,0 +1,19 @@
+{
+  "name": "gitfiles",
+  "version": "1.0.0",
+  "description": "first npm init",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingqiu814/devhome.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tingqiu814/devhome/issues"
+  },
+  "homepage": "https://github.com/tingqiu814/devhome#readme"
+}

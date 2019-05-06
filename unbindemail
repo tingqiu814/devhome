@@ -1,0 +1,10 @@
+#!/bin/bash
+userid=$1;
+if [ -z $1 ]; then
+    echo 'userno error';
+    exit;
+fi
+command="/usr/local/thunder_register/user_interface/gateway_client";
+$command 127.0.0.1 8636 id2name userid:$userid usertype:2 nametype:-1
+$command 127.0.0.1 8636 127.0.0.1 8636 setuserinfo userid:$userid usertype:2 mail:
+$command 127.0.0.1 8636 127.0.0.1 8636 unbind userid:$userid usertype:2 nametype:4

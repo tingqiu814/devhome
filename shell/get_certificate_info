@@ -1,0 +1,51 @@
+#!/bin/sh
+#check parameter
+_LANG=$LANG
+LANG=en_US
+if [ -z $1 ]; then 
+    echo 'please add domains file';
+    exit;
+fi
+if [ -e $PWD/$1 ];then 
+    DOMAINS=`cat $PWD/$1`
+else
+    echo "file $PWD/$1 not exist";
+    exit 1;
+fi
+one_month_date=`date -d "1 month" +%s`;
+
+for i in $DOMAINS; do
+    if [ ${i:0:1} != "#" ];then
+        echo "---------------"
+#检测443端口
+        if [ $(nc -w 1 $i 443 && echo $? ) ]; then
+            echo $i;
+            echo |openssl s_client -connect $i:443 2>/dev/null | openssl x509 -noout -dates -issuer | sed -n '2,$p' > /tmp/out.out
+            head -1 /tmp/out.out | awk -F = '{if(NR==1) print $2}'
+
+        else
+            echo -e "\033[1;31m${i} 443 port not open \033[0m";
+        fi
+    fi
+done
+LANG=$_LANG
+# export one_month_date=NULL
+#                 # print $1;
+#                 if ( NR==1 ){
+#                 # if( $1 == "notAfter" ) {
+# overtime=system("date -d \""$2"\" +%s > /dev/null");
+# print $overtime;
+# echo system("echo $one_month_date > /dev/null")
+# if( $overtime < system("echo $one_month_date>/dev/null")){
+#     print "过期";
+# }
+#                 } else {
+#                     print $0;
+#                 }
+#             awk -F = "{
+#                 if ( NR == 1 ) {
+# print $one_month_date
+#                 } else {
+#                     print $0;
+#                 }
+#             }"

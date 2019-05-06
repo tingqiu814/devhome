@@ -1,0 +1,27 @@
+#!/bin/bash
+hs_dir='/data/webs/hs_docs';
+
+# 判断文件
+if [ -d $hs_dir ]; then 
+    hs_arr=($(ls $hs_dir | awk -F . '{print $2}'));
+
+    echo -e "\033[1;31m###### please choies one hosts config file ######\033[0m";
+    #echo -e "\032[1;31m#                                               #\033[0m";
+    i=0;
+    for hs_name in ${hs_arr[@]}; do
+        echo $i'.'$hs_name
+        i=$[i+1]
+    done
+    echo "success";
+    exit;
+else
+    echo "$hs_dir is not a directory";
+    exit;
+fi
+
+# 判断第一个参数
+if [ -z $1 ]; then
+    echo "need params. \n";
+    exit;
+fi
+

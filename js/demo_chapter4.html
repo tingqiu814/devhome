@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>javascript高级程序设计 chapter4</title>
+        <script type="text/javascript" src="./example.js"></script>   
+    </head>
+    <body>
+    <script type="text/javascript">
+        //基本类型（undefined,null,boolean,number,string），引用类型(object)
+        var obj1=new Object();
+        var obj2=obj1;
+        obj1.name='obj1';
+        console.log(obj2.name);
+        //基本类型的复制是两个独立的内存空间
+        //引用类的对象是独立的指针，但是属性是公用的。
+        //参数传递
+        function addTen(num){
+            num+=10;
+            return num;
+        }
+        var count=20;
+        var result=addTen(count);
+        console.log(count,result);//20,没变化 30
+
+        function setName(obj){
+            obj.name='name';
+        }
+        var person=new Object();
+        setName(person);
+        console.log(person.name);   //  'name'
+        
+        function setName(obj){
+            obj.name='name';
+            obj=new Object();
+            obj.name='new name';
+        }
+        var person=new Object();
+        setName(person);
+        console.log(person.name);   //'name'
+
+        // typeof检测基本数据类型，单检测引用类型就不怎么好用了
+        // instanceof    操作符
+        // result = variable instanceof constructor
+
+        // person instanceof Object;   //变量person 是Object吗
+        // color instanceof Array;   //变量color 是Array吗
+        // pattern instanceof RegExp;   //变量pattern 是RegExp吗
+        
+        var color='blue';
+        function changeColor(){
+            var anotherColor='red';
+                function swapColors(){
+                    var tempColor=anotherColor;
+                    anotherColor=color;
+                    color=tempColor;
+                    //这里可以访问color、anotherColor和tempColor
+                }
+                //这里可以访问color和anotherColor，但不能访问tempColor
+                swapColors();
+        }
+        changeColor();
+        //延长作用域链
+        //try-catch语句的catch块
+        //with语句
+        function buildUrl(){
+            var qs="?debug=true";
+            with(location){
+                var url=href+qs;
+            }
+            return url;
+        }
+//在ie8及之前的版本javascript实现中，存在一个与标准不一致的地方，即在catch语句中捕获的错误对象会被添加到执行环境的变量对象，而不是catch语句的变量对象中。换句话说，即使是在catch块的外部也可以访问到错误对象。ie9修复了这个问题。
+if(true){
+    var color='blue';
+}
+console.log(color); //  'blue'
+
+function add(n1,n2){
+    var sum=n1+n2;
+    return sum;
+}
+var result=add(10,20);  //30
+// console.log(sum);    //sum不是有效变量  可以将sum前的var去掉让其为全局变量
+
+var color='blue';
+function getColor(){
+    return color;
+}
+console.log(getColor());// blue
+        //垃圾收集
+        
+        // 基本类型只在内存中占据固定大小的空间，因此被保存在占内存中
+        // 从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本
+        // 引用类型的值是对象，保存在堆内存中
+        // 包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向对象的指针
+        // 从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象
+        // 确定一个值是那种基本类型可以使用typeof操作符，而确定一个值是那种引用类型可以使用instanceof操作符
+
+    </script>
+    </body>
+</html>
