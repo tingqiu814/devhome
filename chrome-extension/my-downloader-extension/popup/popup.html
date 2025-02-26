@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>结构化下载器</h1>
+      <button id="helpBtn">?</button>
+    </div>
+    
+    <textarea id="inputArea" 
+              placeholder="输入格式：\n目录路径 || 下载地址\n示例：\n全部文件/文档 || http://example.com/file.doc?n=文件名.doc"></textarea>
+    
+    <div class="controls">
+      <button id="downloadBtn" class="primary">开始下载</button>
+      <button id="clearBtn">清空</button>
+    </div>
+    
+    <div id="statusArea">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <div id="statusMessages"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

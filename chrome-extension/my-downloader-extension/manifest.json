@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "结构化下载器",
+  "version": "1.2",
+  "description": "根据目录结构自动下载文件",
+  "icons": {
+    "48": "icons/icon48.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png"
+    }
+  },
+  "permissions": ["downloads"]
+}
